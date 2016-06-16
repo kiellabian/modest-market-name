@@ -33,5 +33,8 @@ class Balance(models.Model):
     owner = models.OneToOneField(User, related_name='balance')
     amount = models.FloatField(default=0.0)
 
+    def __unicode__(self):
+        return '{}\'s balance'.format(self.owner.username)
+
     class Meta:
         app_label = 'name'
