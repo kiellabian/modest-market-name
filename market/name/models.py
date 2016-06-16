@@ -7,6 +7,10 @@ class Name(models.Model):
     owner = models.ForeignKey(User, related_name='names')
     name = models.TextField(blank=False)
 
+    @property
+    def latest_event(self):
+        return self.events.order_by('-started').first()
+
     def __unicode__(self):
         return self.name
 
@@ -47,7 +51,7 @@ class Bid(models.Model):
 class Balance(models.Model):
     owner = models.OneToOneField(User, related_name='balance')
     amount = models.FloatField(default=0.0)
-
+    
     def __unicode__(self):
         return '{}\'s balance'.format(self.owner.username)
 
