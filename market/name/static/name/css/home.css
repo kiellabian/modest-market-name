@@ -2,8 +2,46 @@
 @import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css);
 
 
+.number-bid {
+  padding-left: 27px;
+}
+
+.modal-footer {
+  border-top: 0 !important;
+}
+.btn-default {
+    margin-top: 22px;
+}
+
+.modal-footer .btn+.btn {
+    margin-top: 22px;
+}
+
+
+.select-btn {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 6px 12px;
+    border: 1px solid transparent;
+    margin: 1px 0;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 4px;
+    background-image: none;
+    cursor: pointer;
+    outline: 0!important;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    width: 100%;
+}
+
+
 .modal-body {
-  height: 79px;
+  height: 122px;
 }
 
 .market--name {

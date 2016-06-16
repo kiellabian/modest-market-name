@@ -2,6 +2,8 @@ import json
 
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.views.generic import TemplateView
 
 from .models import BiddingEvent, Name, Bid, Balance
@@ -13,7 +15,19 @@ class HomeView(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(HomeView, self).get_context_data(*args, **kwargs)
         context['events'] = BiddingEvent.objects.all()
+
+        if self.request.user.is_authenticated():
+            context['names'] = Name.objects.filter(owner=self.request.user)
         return context
+
+    def post(self, request, *args, **kwargs):
+        value = self.request.POST.get('value')
+        name_pk = self.request.POST.get('name')
+        print value, name_pk
+        name = get_object_or_404(Name, pk=name_pk)
+        event = BiddingEvent.objects.create(starting_bid=value, name=name)
+        print event
+        return HttpResponseRedirect(reverse('home'))
 
 
 class BiddingView(TemplateView):

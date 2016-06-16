@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block page_content %}
+<button type="button" class="btn btn-primary btn-cons" style="float: right;" data-toggle="modal" data-target="#myModal">SELL MY NAME</button>
+
 <div class="container">
 	<div class="panel panel-primary">
 	    <div class="panel-heading">
@@ -25,7 +27,6 @@
 									<p>Bidding Value: ${{ event.highest_bid|floatformat:-2 }}</p>
 								</div>
 							</a>
-							<button type="button" class="btn btn-primary btn-cons" data-toggle="modal" data-target="#myModal">SELL MY NAME</button>
 						</div>
 					</li>
 					{% endfor %}
@@ -98,33 +99,39 @@
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">SELL MY NAME</h4>
-      </div>
-      <div class="modal-body">
-        <div class="col-lg-12">
-            <form role="form" class="col-md-9">
-				<div class="form-group">
-				<input id="name" name="name" type="number" class="form-control" required placeholder="1">
-				</div>
-			</form>
-			<div class="col-lg-2">
-            	    <select class="selectpicker" data-style="btn-danger">
-				      <option>Mustard</option>
-				      <option>Ketchup</option>
-				      <option>Relish</option>
-				  </select>
-            </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h4 class="modal-title" id="myModalLabel">SELL MY NAME</h4>
+      		</div>
+
+			<div class="modal-body">
+	      	<form action="{% url 'home' %}" method="post" role="form" class="col-md-12" style="margin-top: -20px;">
+	      		{% csrf_token %}
+				<div>
+					<div class="form-group col-md-4">
+						<span class="dollar">$</span>
+						<input id="value" name="value" type="number" class="form-control number-bid" required placeholder="1">
+					</div>
+					<div class="col-lg-8" style="margin-top: 21px;">
+						<select name="name" class="selectpicker select-btn" data-style="btn-danger">
+							{% for name in names %}
+							<option value="{{ name.pk }}">{{ name.name }}</option>
+							{% endfor %}
+						</select>
+		            </div>
+	        	</div>
+		      	
+		      	<div class="modal-footer">
+		    		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        	<button type="submit" class="btn btn-primary">Save changes</button>
+		    	</div>
+		    </form>
+		    </div>
+		</div>
+	</div>
 </div>
+
+
 {% endblock %}
