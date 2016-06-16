@@ -106,20 +106,21 @@
       		</div>
 
 			<div class="modal-body">
-	      	<form action="{% url 'home' %}" role="form" class="col-md-12" style="margin-top: -20px;">
-					<div>
-						<div class="form-group col-md-4">
-							<span class="dollar">$</span>
-							<input id="name" name="name" type="number" class="form-control number-bid" required placeholder="1">
-						</div>
-						<div class="col-lg-8" style="margin-top: 21px;">
-							<select class="selectpicker select-btn" data-style="btn-danger">
-								{% for name in names %}
-								<option>{{ name.name }}</option>
-								{% endfor %}
-							</select>
-			            </div>
-		        	</div>
+	      	<form action="{% url 'home' %}" method="post" role="form" class="col-md-12" style="margin-top: -20px;">
+	      		{% csrf_token %}
+				<div>
+					<div class="form-group col-md-4">
+						<span class="dollar">$</span>
+						<input id="name" name="name" type="number" class="form-control number-bid" required placeholder="1">
+					</div>
+					<div class="col-lg-8" style="margin-top: 21px;">
+						<select class="selectpicker select-btn" data-style="btn-danger">
+							{% for name in names %}
+							<option>{{ name.name }}</option>
+							{% endfor %}
+						</select>
+		            </div>
+	        	</div>
 		      	
 		      	<div class="modal-footer">
 		    		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 
 from .models import BiddingEvent, Name, Bid, Balance
