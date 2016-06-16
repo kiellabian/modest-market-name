@@ -18,6 +18,14 @@ class BiddingEvent(models.Model):
     name = models.ForeignKey(Name, related_name='events')
     started = models.DateTimeField(auto_now_add=True)
     duration = models.DurationField(default=timedelta(hours=1))
+    starting_bid = models.FloatField(default=1.0)
+
+    @property
+    def highest_bid(self):
+        if self.bids.count() == 0:
+            return self.starting_bid
+        else:
+            return self.bids.order_by('-value').first().value
 
     def __unicode__(self):
         return self.name.name + ' event'
