@@ -2,6 +2,10 @@
 @import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css);
 
 
+.number-bid {
+  padding-left: 27px;
+}
+
 .modal-body {
   height: 79px;
 }
