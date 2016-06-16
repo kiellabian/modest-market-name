@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 
 from .models import BiddingEvent, Name, Bid, Balance
 
+
 class HomeView(TemplateView):
     template_name = 'home.html'
 
@@ -23,14 +24,13 @@ class BiddingView(TemplateView):
         context['name'] = name.name
         context['starting'] = event.starting_bid
         context['highest_bid'] = highest_bid
-        context['next_bid'] = highest_bid.value + 1
+        context['next_bid'] = event.highest_bid + 1
         context['past_bids'] = event.bids.order_by('value')[1:]
         return context
 
-
     def post(self, request, *args, **kwargs):
-        pk = self.request.POST.get('pk');
-        value = self.request.POST.get('value');
+        pk = self.request.POST.get('pk')
+        value = self.request.POST.get('value')
         user = self.request.user
         name = get_object_or_404(Name, pk=pk)
         event = name.latest_event
