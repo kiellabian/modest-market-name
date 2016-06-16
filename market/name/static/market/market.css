@@ -107,3 +107,8 @@
 .timeline-badge.info {
   background-color: #5bc0de !important;
 }
+
+.panel-primary {
+  width: 48%;
+  margin: 0 auto
+}
