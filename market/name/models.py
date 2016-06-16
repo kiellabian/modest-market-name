@@ -18,3 +18,8 @@ class Bid(models.Model):
     owner = models.ForeignKey(User, related_name='bids')
     event = models.ForeignKey(BiddingEvent, related_name='bids')
     value = models.FloatField(default=0.0)
+
+
+class Balance(models.Model):
+    owner = models.OneToOneField(User, related_name='balance')
+    amount = models.FloatField(default=0.0)
