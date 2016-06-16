@@ -1,83 +1,85 @@
 {% extends 'base.html' %}
 
 {% block page_css %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}market/market.css">
+		<link rel="stylesheet" href="{{ STATIC_URL }}market/market.css">
 {% endblock %}
 
 {% block page_content %}
 <div class="container">
-    <ul class="timeline">
-        <li>
-          <div class="timeline-badge info"><i class="fa fa-smile-o"></i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">Random Names</h4>
-            </div>
-            <div class="timeline-body">
-              <p>Description...</p>
-            </div>
-          </div>
-        </li>
-        
-        <li>
-          <div class="timeline-badge primary"><i class="fa fa-star-o"></i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">Random Names</h4>
-            </div>
-            <div class="timeline-body">
-              <p>Description...</p>
-            </div>
-          </div>
-        </li>
-        
-        <li>
-          <div class="timeline-badge warning"><i class="fa fa-sun-o"></i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">Random Names</h4>
-            </div>
-            <div class="timeline-body">
-              <p>Description...</p>
-            </div>
-          </div>
-        </li>
-        
-        <li>
-          <div class="timeline-badge danger"><i class="fa fa-times-circle-o"></i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">Random Names</h4>
-            </div>
-            <div class="timeline-body">
-              <p>Description...</p>
-            </div>
-          </div>
-        </li>
-        
-        <li>
-          <div class="timeline-badge success"><i class="fa fa-check-circle-o"></i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">Random Names</h4>
-            </div>
-            <div class="timeline-body">
-              <p>Description...</p>
-            </div>
-          </div>
-        </li>
-        
-        <li>
-          <div class="timeline-badge default"><i class="fa fa-frown-o"></i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">Random Names</h4>
-            </div>
-            <div class="timeline-body">
-              <p>Description...</p>
-            </div>
-          </div>
-        </li>
-    </ul>
+		<ul class="timeline">
+				<li>
+					<div class="timeline-badge info"><i class="fa fa-smile-o"></i></div>
+					<div class="timeline-panel">
+						<a href="#">
+							<div class="timeline-heading">
+								<h4 class="timeline-title">Random Names</h4>
+							</div>
+							<div class="timeline-body">
+								<p>Price Range: $1-$50</p>
+							</div>
+						</a>
+					</div>
+				</li>
+				
+				<li>
+					<div class="timeline-badge primary"><i class="fa fa-star-o"></i></div>
+					<div class="timeline-panel">
+						<div class="timeline-heading">
+							<h4 class="timeline-title">Random Names</h4>
+						</div>
+						<div class="timeline-body">
+							<p>Price Range: $51-$61</p>
+						</div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="timeline-badge warning"><i class="fa fa-sun-o"></i></div>
+					<div class="timeline-panel">
+						<div class="timeline-heading">
+							<h4 class="timeline-title">Random Names</h4>
+						</div>
+						<div class="timeline-body">
+							<p>Price Range: $71-$81</p>
+						</div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="timeline-badge danger"><i class="fa fa-times-circle-o"></i></div>
+					<div class="timeline-panel">
+						<div class="timeline-heading">
+							<h4 class="timeline-title">Random Names</h4>
+						</div>
+						<div class="timeline-body">
+							<p>Price Range: $91-$250</p>
+						</div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="timeline-badge success"><i class="fa fa-check-circle-o"></i></div>
+					<div class="timeline-panel">
+						<div class="timeline-heading">
+							<h4 class="timeline-title">Random Names</h4>
+						</div>
+						<div class="timeline-body">
+							<p>Price Range: $441-$50</p>
+						</div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="timeline-badge default"><i class="fa fa-frown-o"></i></div>
+					<div class="timeline-panel">
+						<div class="timeline-heading">
+							<h4 class="timeline-title">Random Names</h4>
+						</div>
+						<div class="timeline-body">
+							<p>Price Range: $1-$50</p>
+						</div>
+					</div>
+				</li>
+		</ul>
 </div>
 {% endblock %}
