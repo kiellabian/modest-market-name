@@ -13,8 +13,11 @@
 	    <div class="panel-body">
 	        <div class="row">
 	            <div class="col-lg-12">
-	            	<p>Current Highest Bidder: Joegie, $100</p>
-	            	<p>Starting Bid: $10</p>
+					{% if highest_bid %}
+					<p>Current Highest Bidder: {{ highest_bid.owner.username }}, ${{ highest_bid.value}}</p>
+					{% else %}
+					<p>Starting Bid: {{ starting }}</p>
+					{% endif %}
 	                <form role="form" class="col-md-9">
 						<div class="form-group">
 						<span class="dollar">$</span>
@@ -29,7 +32,11 @@
 	        <div class="alert alert-info">
                 <strong>LIST OF OUR PREVIOUS BIDDER</strong>
                 <ul>
-                	<li>djkfhdsjkfhjdsk</li>
+                {% for bid in past_bids %}
+					<li>{{bid.owner.username}}, ${{bid.value}}</li>
+                {% empty %}
+					<em>None</em>
+                {% endfor %}
                 </ul> 
             </div>
 	    </div>
