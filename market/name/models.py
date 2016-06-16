@@ -7,6 +7,9 @@ class Name(models.Model):
     owner = models.ForeignKey(User, related_name='names')
     name = models.TextField(blank=False)
 
+    def __unicode__(self):
+        return self.name
+
     class Meta:
         app_label = 'name'
 
@@ -16,8 +19,12 @@ class BiddingEvent(models.Model):
     started = models.DateTimeField(auto_now_add=True)
     duration = models.DurationField(default=timedelta(hours=1))
 
+    def __unicode__(self):
+        return self.name.name + ' event'
+
     class Meta:
         app_label = 'name'
+        ordering = ['-pk']
 
 
 class Bid(models.Model):

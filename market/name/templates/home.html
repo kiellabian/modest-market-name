@@ -7,6 +7,24 @@
 {% block page_content %}
 <div class="container">
 		<ul class="timeline">
+				
+				{% for event in events %}
+				<li>
+					<div class="timeline-badge warning"><i class="fa fa-sun-o"></i></div>
+					<div class="timeline-panel">
+						<a href="{% url 'bidding' event.pk %}">
+							<div class="timeline-heading">
+								<h4 class="timeline-title">{{ event.name.name }}</h4>
+							</div>
+							<div class="timeline-body">
+								<p>Starting Price: $50</p>
+							</div>
+						</a>
+					</div>
+				</li>
+				{% endfor %}
+
+				{% comment %}
 				<li>
 					<div class="timeline-badge info"><i class="fa fa-smile-o"></i></div>
 					<div class="timeline-panel">
@@ -23,18 +41,6 @@
 				
 				<li>
 					<div class="timeline-badge primary"><i class="fa fa-star-o"></i></div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4 class="timeline-title">Random Names</h4>
-						</div>
-						<div class="timeline-body">
-							<p>Starting Price: $50</p>
-						</div>
-					</div>
-				</li>
-				
-				<li>
-					<div class="timeline-badge warning"><i class="fa fa-sun-o"></i></div>
 					<div class="timeline-panel">
 						<div class="timeline-heading">
 							<h4 class="timeline-title">Random Names</h4>
@@ -80,6 +86,7 @@
 						</div>
 					</div>
 				</li>
+				{% endcomment %}
 		</ul>
 </div>
 {% endblock %}
