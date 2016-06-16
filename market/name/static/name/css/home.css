@@ -6,6 +6,18 @@
   padding-left: 27px;
 }
 
+.modal-footer {
+  border-top: 0 !important;
+}
+.btn-default {
+    margin-top: 22px;
+}
+
+.modal-footer .btn+.btn {
+    margin-top: 22px;
+}
+
+
 .select-btn {
     display: inline-block;
     vertical-align: middle;
@@ -29,7 +41,7 @@
 
 
 .modal-body {
-  height: 79px;
+  height: 122px;
 }
 
 .market--name {
