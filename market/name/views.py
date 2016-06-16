@@ -10,6 +10,9 @@ class HomeView(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(HomeView, self).get_context_data(*args, **kwargs)
         context['events'] = BiddingEvent.objects.all()
+
+        if self.request.user.is_authenticated():
+            context['names'] = Name.objects.filter(owner=self.request.user)
         return context
 
 
