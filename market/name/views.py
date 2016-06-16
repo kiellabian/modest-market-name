@@ -1,8 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 
-from .models import BiddingEvent
-from .models import Name
+from .models import BiddingEvent, Name, Bid, Balance
 
 class HomeView(TemplateView):
     template_name = 'home.html'
@@ -19,7 +18,7 @@ class BiddingView(TemplateView):
     def get_context_data(self, **kwargs):
         context = {}
         name = get_object_or_404(Name, pk=kwargs['pk'])
-        event = name.events.order_by('-started').first()
+        event = name.latest_event
         highest_bid = event.bids.order_by('value').first()
         context['name'] = name.name
         context['starting'] = event.starting_bid
@@ -27,3 +26,15 @@ class BiddingView(TemplateView):
         context['next_bid'] = highest_bid.value + 1
         context['past_bids'] = event.bids.order_by('value')[1:]
         return context
+
+
+    def post(self, request, *args, **kwargs):
+        pk = self.request.POST.get('pk');
+        value = self.request.POST.get('value');
+        user = self.request.user
+        name = get_object_or_404(Name, pk=pk)
+        event = name.latest_event
+        Bid.objects.create(owner=user, event=event, value=value)
+        current_balance = user.balance.amount
+        user.balance.amount = current_balance - value
+        user.balance.save()
